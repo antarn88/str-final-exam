@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col-12 mt-2">
     <h2>User List</h2>
+    <div class="col-4 offset-4 mb-5">
+      <input type="text" class="form-control" placeholder="Search" (keyup)="onChangePhrase($event)">
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -13,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users$ | async">
+        <tr *ngFor="let user of users$ | async | filter:'name':phrase">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
@@ -24,7 +27,7 @@
               <button [routerLink]="['user/' + user.id]" class="btn btn-info">
                 <i class="fa fa-pencil"></i>
               </button>
-              <button class="btn btn-danger">
+              <button class="btn btn-danger" (click)="onDelete(user.id)">
                 <i class="fa fa-trash"></i>
               </button>
             </div>

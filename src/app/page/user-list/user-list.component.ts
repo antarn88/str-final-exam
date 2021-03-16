@@ -11,12 +11,25 @@ import { UserService } from 'src/app/service/user.service';
 export class UserListComponent implements OnInit {
 
   users$: Observable<User[]> = this.userService.getAll();
+  phrase: string = '';
 
   constructor(
     private userService: UserService,
   ) { }
 
   ngOnInit(): void {
+  }
+
+  onDelete(id: number): void {
+    if (confirm(`Are you sure you want to delete user with ${id} ID?`)) {
+      this.userService.remove(id).subscribe(
+        () => this.users$ = this.userService.getAll()
+      );
+    }
+  }
+
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
   }
 
 }
