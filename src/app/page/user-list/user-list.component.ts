@@ -12,6 +12,8 @@ export class UserListComponent implements OnInit {
 
   users$: Observable<User[]> = this.userService.getAll();
   phrase: string = '';
+  sorterColumn: string = 'id';
+  sorterDirection: string = 'ASC';
 
   constructor(
     private userService: UserService,
@@ -30,6 +32,10 @@ export class UserListComponent implements OnInit {
 
   onChangePhrase(event: Event): void {
     this.phrase = (event.target as HTMLInputElement).value;
+  }
+
+  onClickColumn(column: string): void {
+    this.sorterColumn = column;
   }
 
 }
