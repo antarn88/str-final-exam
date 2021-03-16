@@ -6,13 +6,9 @@
       <div class="form-group">
         <label>Name</label>
         <!-- Validation: min 8 char, max 40 char, required -->
-        <input
-        class="form-control"
-        type="text"
-        name="name"
-        [(ngModel)]="user.name"
-        pattern=".{8,40}" required>
-        <div [hidden]="userForm.controls.name?.valid" class="error-message">
+        <input class="form-control" type="text" name="name" [(ngModel)]="user.name" pattern=".{8,40}" required
+          autofocus>
+        <div [hidden]="userForm.controls.name?.valid || userForm.controls.name?.pristine" class="error-message">
           The name must be minimum 8 characters and maximum 40 characters.
         </div>
       </div>
@@ -20,29 +16,20 @@
         <label>Email</label>
         <!-- Validation: valid email, required.
           Help: https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript -->
-          <input
-          class="form-control"
-          type="email"
-          name="email"
-          [(ngModel)]="user.email"
+        <input class="form-control" type="email" name="email" [(ngModel)]="user.email"
           pattern='^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
           required>
-          <div [hidden]="userForm.controls.email?.valid" class="error-message">
-            Invalid or missing email address!
-          </div>
+        <div [hidden]="userForm.controls.email?.valid || userForm.controls.email?.pristine" class="error-message">
+          Invalid or missing email address!
         </div>
-        <div class="form-group">
-          <label>Address</label>
-          <!-- Validation: min 8 char, max 100 char, required -->
-          <input
-          class="form-control"
-          type="text"
-          name="address"
-          [(ngModel)]="user.address"
-          pattern=".{8,100}" required>
-          <div [hidden]="userForm.controls.address?.valid" class="error-message">
-            The address must be minimum 8 characters and maximum 100 characters.
-          </div>
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <!-- Validation: min 8 char, max 100 char, required -->
+        <input class="form-control" type="text" name="address" [(ngModel)]="user.address" pattern=".{8,100}" required>
+        <div [hidden]="userForm.controls.address?.valid || userForm.controls.address?.pristine" class="error-message">
+          The address must be minimum 8 characters and maximum 100 characters.
+        </div>
       </div>
       <div class="form-group">
         <label>Active</label>

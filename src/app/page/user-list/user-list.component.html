@@ -4,7 +4,8 @@
     <div class="col-4 offset-4 mb-5">
       <input type="text" class="form-control" placeholder="Search" (keyup)="onChangePhrase($event)">
     </div>
-    <table class="table table-striped">
+    <button class="btn btn-primary btn-block btn-lg mb-5" [routerLink]="['user/' + 0]">Create a new user</button>
+    <table class="table table-striped mb-5">
       <thead>
         <tr>
           <th (click)='onClickColumn("id")'>#</th>
