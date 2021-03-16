@@ -1,7 +1,7 @@
 <div class="row">
   <div *ngIf="user$ | async as user" class="col-6 offset-3 mt-3">
     <h2>Update / Create User</h2>
-    <form #userForm="ngForm">
+    <form #userForm="ngForm" (ngSubmit)="onUpdate(user)">
       <input name="id" type="hidden" [(ngModel)]="user.id">
       <div class="form-group">
         <label>Name</label>
